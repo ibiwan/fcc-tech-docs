@@ -1,0 +1,104 @@
+<html>
+<head>
+	<link type='text/css' rel='stylesheet' href='styles.css'>
+	<script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+	<script src='app.js'></script>
+</head>
+<main id='main-doc'>
+  <nav id='navbar'>
+    <header><h1>Responsive Navigation How-To</h1></header>
+    <a class='nav-link' href='#Mobile_First'>Mobile First</a>
+    <a class='nav-link' href='#Color_Palette'>Color Palette</a>
+    <a class='nav-link' href='#Top_Nav'>Top Nav</a>
+    <a class='nav-link' href='#Media_Query'>Media Query</a>
+    <a class='nav-link' href='#Side_Nav'>Side Nav</a>
+  </nav>
+  <div id='nav-push'></div>
+  <article>
+    <section class='main-section' id='Mobile_First'>
+      <header><h2>Mobile First</h2></header>
+      <p>"Mobile-First" design means laying out your web page such that its default arrangement is that intended for mobile browsers.  Media queries should specify deviations from this layout, for larger browsers, because mobile devices benefit more from smaller, simpler css definitions.</p>
+      <p>Remember, however, that your content should be written semantically, with no mobile OR desktop layout in mind -- just use main, article, section, headers, h1-h6, etc., to describe the relationships in meaning between portions of your page, rather than visual relationships in screen space.</p>
+      <p>Keeping this in mind, start by filling out your css accounting for the smallest screens, in the simplest orientations, your users are likely to use.  Normal block layout will often do the right thing automatically.  Your non-media-queried css can also include color, font, link, and other thematic styling, some of which is described below in <a href='#Color_Palette'>Color Palette</a></p>
+      <p>
+        This is also when you will design your mobile nav elements, with whatever positioning and behavior you want the nav bar to have -- auto-hiding, fixed-at-top, etc.  One approach for a nav bar is discussed below in <a href='#Top_Nav'>Top Nav</a>
+      </p>
+      <code>code code</code>
+      <ul>
+        <li>item
+        <li>item
+        <li>item
+        <li>
+        <li>
+      </ul>
+    </section>
+    <section class='main-section' id='Color_Palette'>
+      <header><h2>Color Palette</h2></header>
+      <p>Pick a set of colors, of various lightness and intensity, all of which come from two hues that are related: for example, complementary, i.e. opposite each other on the color wheel.  <a href='http://paletton.com'>Paletton.com</a> can help you set up the colors, get their codes, and see them next to each other.</p>
+      <p>Set up your selected colors in a <code>:root</code> selector block in your css; use the double-dash naming convention to specify named variables indicating the intended usage of each color:</p>
+      <code class='code-block'>:root {
+  --menu-main-background:      #8B751D;
+  --menu-main-text:            #DDDDDD;
+  --body-main-background:      #6F66A0;
+  --body-main-text:            #111111;
+  --body-secondary-background: #3C3176;
+}</code>
+      <p>
+        When you need a text or background color in your layout, specify the name of the desired color using the var() function:
+      </p>
+      <code class='code-block'>  color: var(--menu-main-text);
+  background-color: var(--menu-main-background);
+</code>
+      <p>
+        Example uses for named colors:
+      </p>
+      <ul>
+        <li>Semantic elements: main, menu, aside
+        <li>Tiers: primary, secondary, alternate
+        <li>Types: text, code, background, shadow
+        <li>Intensities: normal, lighter, darker
+      </ul>
+    </section>
+    <section class='main-section' id='Top_Nav'>
+      <header><h2>Top Nav</h2></header>
+      <p></p>
+      <p></p>
+      <code></code>
+      <ul>
+        <li>
+        <li>
+        <li>
+        <li>
+        <li>
+      </ul>
+    </section>
+    <section class='main-section' id='Media_Query'>
+      <header><h2>Media Query</h2></header>
+      <p></p>
+      <p></p>
+      <code></code>
+      <ul>
+        <li>
+        <li>
+        <li>
+        <li>
+        <li>
+      </ul>
+    </section>
+    <section class='main-section' id='Side_Nav'>
+      <header><h2>Side Nav</h2></header>
+      <p></p>
+      <p></p>
+      <code></code>
+      <ul>
+        <li>
+        <li>
+        <li>
+        <li>
+        <li>
+      </ul>
+    </section>
+  </article>
+</main>
+</html>
