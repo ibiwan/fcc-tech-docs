@@ -89,6 +89,7 @@ code {
 }
 
 .code-block {
+    overflow-x: scroll;
     display: block;
     white-space: pre;
     margin: 2px;
