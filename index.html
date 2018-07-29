@@ -8,6 +8,7 @@
         <script src='app.js'></script>
     </head>
     <main id='main-doc'>
+        <div id='nav-push'></div>
         <nav id='navbar'>
             <header>
                 <h1>Responsive Navigation How-To</h1>
@@ -18,7 +19,6 @@
             <a class='nav-link' href='#Media_Query'>Media Query</a>
             <a class='nav-link' href='#Side_Nav'>Side Nav</a>
         </nav>
-        <div id='nav-push'></div>
         <article>
             <section class='main-section' id='Mobile_First'>
                 <header>
@@ -68,11 +68,11 @@
                     the intended usage of each color:
                 </p>
                 <code class='code-block pop'>:root {
-  --menu-main-background:      #8B751D;
-  --menu-main-text:            #DDDDDD;
-  --body-main-background:      #6F66A0;
-  --body-main-text:            #111111;
-  --body-secondary-background: #3C3176;
+    --menu-main-background:      #8B751D;
+    --menu-main-text:            #DDDDDD;
+    --body-main-background:      #6F66A0;
+    --body-main-text:            #111111;
+    --body-secondary-background: #3C3176;
 }</code>
                 <p>
                     When you need a text or background color in your layout, specify the name of the desired color using the var() function:
@@ -82,7 +82,6 @@ background-color: var(--menu-main-background);</code>
                 <p>
                     Example uses for named colors:
                 </p>
-                <div class='space'></div>
                 <div class='defs'>
                     <dl class='pop'>
                         <dt>Semantic elements:</dt>
@@ -109,25 +108,83 @@ background-color: var(--menu-main-background);</code>
                 <ol>
                     <li>
                         <h3>Design look of nav bar and its buttons</h3>
-                        <p>Set up the outer nav as a flex container, wrapping contents in case the screen is too narrow to fit
-                            all the buttons in one row.
+                        <p>
+                            Set up the outer nav as a flex container, wrapping contents in case the screen is too narrow to fit all the buttons in one
+                            row.
                         </p>
                         <code class='code-block'>nav {
     display:         flex;
     flex-wrap:       wrap;
     justify-content: space-evenly;
 }</code>
+                        <p>
+                            Style your buttons as desired -- I used simple shadowed rectangles.
+                        </p>
+                        <code class='code-block'>nav>* {
+    margin: 10px !important;
+    padding: 10px;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: var(--menu-main-text);
+    background-color: var(--menu-main-background);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(0, 0, 0, 0.2);
+}</code>
                     </li>
                     <li>
                         <h3>Attach nav bar to top of window</h3>
+                        <p>
+                            Use CSS to affix the nav container to the top and sides of the viewport:
+                        </p>
+                        <code class='code-block'>nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}</code>
                     </li>
                     <li>
                         <h3>Set up top non-nav element to display below nav bar</h3>
+                        <p>One approach is to use a spacer div at the same point in code as the nav bar, with javascript/jquery
+                            in place to automatically match it in size to the nav:</p>
+                        <code class='code-block'>&lt;div id='nav-push'>&lt;/div></code>
+                        <code class='code-block'>let navht = 0
+
+function resizeHeader() {
+    let nav    = $('#navbar')
+    let pusher = $('#nav-push')
+
+    navht = pusher.is(':visible') ? nav.height() : 0
+
+    pusher.height(navht);
+}
+
+$(() => {
+    resizeHeader();
+    $(window).resize(resizeHeader);
+})
+</code>
                     </li>
-                    <li>Arrange for anchor links to scroll so that anchor is below nav bar</li>
+                    <li>
+                        <h3>Arrange for anchor links to scroll so that anchor is below nav bar</h3>
+                        <p>Again, using javascript/jquery, intercept nav link clicks, and scroll to a point a distance above
+                            the target anchor equal to the height of the nav bar. This example animates the scroll for a
+                            smooth transition and visual cue as to what transition occurred:</p>
+                        <code class='code-block'>function scroller() {
+    let tgt = $(this.hash)
+    let nav = $('#navbar')
+    $('html,body').animate({
+        scrollTop: tgt.position().top - navht
+    })
+    return false
+}
+
+$(() => {
+    $('.nav-link').click(scroller);
+})
+</code>
+                        <p>*Note: This snippet assumes
+                            <code>navht</code> is maintained by the earlier resize code.</p>
+                    </li>
                 </ol>
-                <p></p>
-                <code></code>
             </section>
             <section class='main-section' id='Media_Query'>
                 <header>

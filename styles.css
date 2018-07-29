@@ -23,7 +23,6 @@ nav {
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -97,14 +96,6 @@ code {
     font-size: larger;
 }
 
-* {
-    /* border: 1px solid black; */
-}
-
-.space {
-    display: inline-block;
-    width: 2em;
-}
 
 .defs {
     display: inline-block;
@@ -114,7 +105,9 @@ dl {
     padding-left: 1em;
     padding-right: 1em;
     display: grid;
-    grid-template-columns: minmax(max-content, max-content) minmax(max-content, max-content);
+    grid-template-columns: 
+      minmax(min-content, max-content) 
+      minmax(min-content, max-content);
 }
 
 dt {
