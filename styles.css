@@ -118,7 +118,9 @@ dd {
     margin-left: 1em;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
+    /* 900 is larger than almost all phones, and portrait-mode tablets. */
+    /* it is smaller than the majority of tablets in landscape mode, as well as desktops. */
     nav {
         height: 100%;
         width: 10em;
