@@ -15,21 +15,24 @@ body {
 }
 
 .pop {
+    /* add with jquery to desired other classes */
     margin: 10px !important;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 nav {
-    position: fixed;
-    top: 0px;
-    left: 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: var(--menu-secondary-background);
+    /* fix to top of page */
+    position: fixed;
+    top: 0px;
+    left: 0px;
 }
 
 nav>header {
+    /* put page banner in nav area -- fill width so buttons go below it */
     width: 100%;
     text-transform: uppercase;
     text-align: center;
@@ -37,7 +40,8 @@ nav>header {
     background-color: var(--menu-secondary-background);
 }
 
-nav>* {
+nav>.nav-link {
+    /* make material-style buttons */
     margin: 5px;
     padding: 10px;
     text-transform: capitalize;
@@ -46,20 +50,40 @@ nav>* {
     background-color: var(--menu-main-background);
 }
 
+nav>.nav-link:active {
+    /* animate pushing button when clicked */
+    animation-name: pushbutton;
+    animation-duration: 100ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pushbutton {
+    /* lazy animation -- assume default position at 0% */
+    100% {
+        box-shadow: 1px 1px #666;
+        transform: translate(3px, 3px);
+    }
+}
+
 section {
+    /* display as cards */
     padding: 30px;
     margin-top: 10px;
     background-color: var(--body-main-background);
 }
 
 article {
+    /* main content area */
     color: var(--body-main-text);
 }
 
 p {
+    /* indent paragraphs like your junior high teachers told you */
     text-indent: 1em;
     text-align: justify;
 }
+
+/* style links within content to match color scheme */
 
 section a:link {
     font-weight: bold;
@@ -83,11 +107,13 @@ header>h2 {
 }
 
 code {
+    /* make a nice frame around inline code snippets or variable names */
     padding: 3px;
     background-color: var(--body-main-code-background);
 }
 
 .code-block {
+    /* get more fancy for multi-line blocks; scroll when too wide */
     overflow-x: scroll;
     display: block;
     white-space: pre;
@@ -96,18 +122,18 @@ code {
     font-size: larger;
 }
 
-
 .defs {
+    /* reduce width of definitions block to that of content */
     display: inline-block;
 }
+
+/* show definitions as a middle-aligned table */
 
 dl {
     padding-left: 1em;
     padding-right: 1em;
     display: grid;
-    grid-template-columns: 
-      minmax(min-content, max-content) 
-      minmax(min-content, max-content);
+    grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content);
 }
 
 dt {
@@ -122,13 +148,13 @@ dd {
     /* 900 is larger than almost all phones, and portrait-mode tablets. */
     /* it is smaller than the majority of tablets in landscape mode, as well as desktops. */
     nav {
-        height: 100%;
-        width: 10em;
-        margin-top: -20px;
-        padding: 20px;
+        /* fix to left side of page */
         position: fixed;
         left: 0px;
-        display: flex;
+        height: 100%;
+        width: 10em;
+        padding: 20px;
+        /* switch display direction of buttons */
         flex-direction: column;
         justify-content: flex-start;
     }
@@ -137,9 +163,11 @@ dd {
     }
     article {
         margin: 20px 20px 20px 14em;
+        /* I forget what this fixed */
         padding-left: -14em;
     }
     #nav-push {
+        /* hide spacing div, only needed for top-nav */
         display: none;
     }
 }
